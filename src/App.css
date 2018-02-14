@@ -1,0 +1,167 @@
+*{
+  box-sizing: border-box;
+  margin:0;
+  padding: 0;
+}
+/*main section*/
+.App {
+  text-align: center;
+  background-image: url('https://images.pexels.com/photos/724216/pexels-photo-724216.jpeg?w=1260&h=750&dpr=2&auto=compress&cs=tinysrgb');
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  max-height: 100vh;
+  min-height: 100vh;
+  width:100%;
+
+
+}
+.App .container{
+  background-color: rgba(255,255,255,.3);
+  height: 100vh;
+  width:100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 5%;
+}
+
+/*profile section*/
+.profile-container{
+  background-color:#f0f0f0;
+  width: 40%;
+  height: 100%;
+  padding:2%;
+  position: relative;
+  box-shadow: 0 3px 3px 3px rgba(0,0,0,.3);
+
+}
+.profile-container img{
+  width: 350px;
+  height: 350px;
+  border-radius: 50%;
+  border:3px solid rgba(0,0,0,.5);
+  margin-bottom: 5%;
+}
+.profile-container p{
+  margin: 2% 0;
+}
+.profile-container div{
+  height: 45%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.profile-container span{
+  padding: 1%;
+  min-width: 50%;
+  border-radius: 10px;
+  box-shadow: 0 1px 1px 1px rgba(0,0,0,.5);
+  font-size: 1.2em;
+}
+.but{
+  padding: 2%;
+  min-width: 50%;
+}
+.profile-container input{
+  width: 50%;
+  height: 30px;
+  margin-bottom: 1%;
+}
+.profile-container textarea{
+  width: 50%;
+  height: 50px;
+  margin-bottom: 1%;
+}
+.profile-container section{
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.2em;
+}
+.profile-container p{
+  width: 50%;
+  padding: 2% 4%;
+
+}
+
+
+
+/*card*/
+
+.main-card{
+  border-radius: 10px;
+  box-shadow: 0 1px 1px 1px rgba(0,0,0,.2);
+  padding: 1%;
+  display: flex;
+  justify-content: space-around;
+  max-height: 200px;
+  margin-bottom: 2%;
+}
+.main-card img{
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+
+}
+.main-card p{
+  margin: 2% 0;
+  font-size: .9em;
+  max-height: 100px;
+  min-height: 100px;
+  overflow-y: scroll;
+  padding: 1% 2%;
+}
+.main-card section{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 50px;
+}
+.main-card span{
+  padding: 2%;
+  min-width: 20%;
+  border-radius: 10px;
+  box-shadow: 0 1px 1px 1px rgba(0,0,0,.5);
+  font-size: 1.5em;
+  cursor: pointer;
+}
+.like{
+  background-color: darkseagreen;
+}
+.dislike{
+  background-color: indianred;
+}
+
+
+/*cards section*/
+
+.cards-container{
+  background-color:#f0f0f0;
+  width: 40%;
+  height: 100%;
+  padding:2%;
+  position: relative;
+  box-shadow: 0 3px 3px 3px rgba(0,0,0,.3);
+  overflow-y: scroll;
+}
+
+/*Login component*/
+
+.login section{
+  width: 50%;
+  background-color:#f0f0f0;
+  height: 30vh;
+  padding: 2%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.login span{
+  padding: 2%;
+  border-radius: 10px;
+  background-color: #dd4b39;
+  color: #fff;
+  cursor: pointer;
+}
