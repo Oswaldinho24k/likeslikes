@@ -6,7 +6,7 @@ class LoginPage extends Component {
 
     saveUser=(u)=>{
       firebase.database().ref('likelike/users/'+u.uid)
-          .set({
+          .update({
               username:u.displayName,
               image:u.photoURL,
               email:u.email,
