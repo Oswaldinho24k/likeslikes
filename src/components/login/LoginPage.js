@@ -4,14 +4,26 @@ import firebase from '../../firebase';
 
 class LoginPage extends Component {
 
+    componentWillMount(){
+        firebase.auth().getRedirectResult()
+            .then(result=> {
+                if(!result.user) return;
+                console.log(result.user);
+                localStorage.setItem("user",JSON.stringify(result.user));
+                this.saveUser(result.user);
+                this.props.history.push("/");
+            }).catch(function(error) {
+            console.log(error)
+        });
+    }
+
     saveUser=(u)=>{
       firebase.database().ref('likelike/users/'+u.uid)
-          .update({
+          .set({
               username:u.displayName,
               image:u.photoURL,
               email:u.email,
               uid:u.uid,
-
           }).then(r=>{
               this.props.history.push('/')
       })
@@ -19,9 +31,8 @@ class LoginPage extends Component {
 
     loginGoogle=()=>{
         let provider = new firebase.auth.GoogleAuthProvider();
-        firebase.auth().signInWithPopup(provider).then((result)=> {
-            console.log(result.user);
-            this.saveUser(result.user);
+        firebase.auth().signInWithRedirect(provider).then((result)=> {
+            console.log(result);
 
         })
     };

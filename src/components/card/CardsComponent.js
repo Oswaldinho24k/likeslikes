@@ -2,7 +2,7 @@ import React from 'react';
 import MainCard from "./MainCard";
 
 const CardsComponent = ({users, like, dislike}) => {
-    users = Object.keys(users).map(function (key) { return users[key]; });
+    if(users!==undefined || users) users = Object.keys(users).map(function (key) { return users[key]; });
     for(let i in users){
         console.log(users[i])
     }
