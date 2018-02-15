@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ProfileComponent = ({username, uid, image, email, descripcion, instagram, github, likes, dislikes}) => {
+const ProfileComponent = ({username, uid, image, email, descripcion, instagram, github, likes, dislikes, logOut, editar, handleText, saveUser}) => {
     return (
         <div className='profile-container'>
             <img src={image} alt={username}/>
@@ -10,13 +10,14 @@ const ProfileComponent = ({username, uid, image, email, descripcion, instagram, 
                     <p className='like'> 😏 {likes?likes.length:0} </p>
                     <p className='dislike'>  🙄 {dislikes?dislikes.length:0} </p>
                 </section>
-                <textarea placeholder={'Tu descripción'} defaultValue={descripcion}/>
-                <input type='text' placeholder='email' defaultValue={email}/>
-                <input type='text' placeholder='instagram' defaultValue={instagram}/>
-                <input type='text' placeholder='github' defaultValue={github}/>
+                <textarea placeholder={descripcion?descripcion:'Tu descripción'} name={'descripcion'} onChange={handleText}/>
+                <input type='text' placeholder={email?email:'email'} name={'email'} onChange={handleText}/>
+                <input type='text' placeholder={instagram?instagram:'instagram'} name={'instagram'} onChange={handleText}/>
+                <input type='text' placeholder={github?github:'github'} name={'github'} onChange={handleText}/>
 
 
-                <span>Guardar</span>
+                <span onClick={saveUser}>Editar</span>
+                <span onClick={logOut}>Salir</span>
             </div>
         </div>
     )

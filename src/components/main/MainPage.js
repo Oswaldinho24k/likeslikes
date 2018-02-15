@@ -56,13 +56,34 @@ class MainPage extends Component {
             // An error happened.
         });
     };
+    saveUser=()=>{
+        let profile= this.state.profile;
+        firebase.database().ref('likelike/users/'+profile.uid)
+            .set({profile}).then(r=>{
+            this.getMyProfile(profile)
+        })
+    };
+    handleText=(e)=>{
+        let profile=this.state.profile;
+        let field = e.target.name;
+        profile[field] = e.target.value;
+        this.setState({profile});
+        console.log(profile)
+    };
+
     render() {
         let {profile, users} = this.state;
+
         return (
             <div className="App">
                 <div className='container'>
-                    <ProfileComponent {...profile}/>
-                    <CardsComponent users={users}/>
+                    <ProfileComponent
+                        {...profile}
+                        logOut={this.logOut}
+                        handleText={this.handleText}
+                        saveUser={this.saveUser}/>
+                    <CardsComponent
+                        users={users} />
                 </div>
             </div>
         );
