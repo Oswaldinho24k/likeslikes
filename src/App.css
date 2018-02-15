@@ -37,17 +37,18 @@
 
 }
 .profile-container img{
-  width: 250px;
-  height: 250px;
+  width: 150px;
+  height: 150px;
   border-radius: 50%;
   border:3px solid rgba(0,0,0,.5);
-  margin-bottom: 5%;
+  margin-bottom: 2%;
 }
 .profile-container p{
   margin: 2% 0;
 }
-.profile-container div{
-  height: 45%;
+.profile-container .container{
+  padding-top: 0;
+  height: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -68,12 +69,12 @@
   min-width: 50%;
 }
 .profile-container input{
-  width: 50%;
+  width: 100%;
   height: 30px;
   margin-bottom: 1%;
 }
 .profile-container textarea{
-  width: 50%;
+  width: 100%;
   height: 50px;
   margin-bottom: 1%;
 }
@@ -83,6 +84,12 @@
   justify-content: space-between;
   font-size: 1.2em;
 }
+.profile-container .input-container{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
 .profile-container p{
   width: 50%;
   padding: 2% 4%;
