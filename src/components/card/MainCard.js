@@ -1,6 +1,6 @@
 import React from 'react';
 
-const MainCard = ({username, image, uid, descripcion}) => {
+const MainCard = ({username, image, uid, descripcion, like, dislike}) => {
     return (
         <div className='main-card'>
             <img src={image} alt={username}/>
@@ -9,8 +9,8 @@ const MainCard = ({username, image, uid, descripcion}) => {
                 <p>{descripcion}</p>
 
                 <section>
-                    <span className='like'> 😏 </span>
-                    <span className='dislike'>  🙄 </span>
+                    <span className='like' onClick={()=>like(uid)}> 😏 </span>
+                    <span className='dislike' onClick={()=>dislike(uid)}>  🙄 </span>
                 </section>
             </div>
         </div>

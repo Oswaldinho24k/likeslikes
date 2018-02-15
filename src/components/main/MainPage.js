@@ -16,31 +16,35 @@ class MainPage extends Component {
             instagram:'@oswaldinho24k',
             github:'/oswaldinho24k'
         },
-        users:[],
+        editar:false,
+        users:[
+
+        ],
     };
 
     componentWillMount(){
-        this.ckheckIfUser();
+        this.checkIfUser();
         this.getUsers();
+
     }
 
     getMyProfile=(u)=>{
         firebase.database().ref('likelike/users/'+u.uid)
             .on('value', snap=>{
+                console.log(snap.val());
                 this.setState({profile:snap.val()})
             })
     };
     getUsers=()=>{
-        let users=[];
-      firebase.database().ref('likelike/users')
-          .on('child_added', snap=>{
-              users.push(snap.val());
-              console.log(users)
-          });
-        this.setState({users})
+        firebase.database().ref('likelike/users')
+            .on('value', snap=>{
+                this.setState({users:snap.val()});
+                console.log(snap.val())
+            });
+
     };
 
-    ckheckIfUser=()=>{
+    checkIfUser=()=>{
         firebase.auth().onAuthStateChanged((user)=> {
             if (user) {
                 this.getMyProfile(user)
@@ -58,9 +62,11 @@ class MainPage extends Component {
     };
     saveUser=()=>{
         let profile= this.state.profile;
-        firebase.database().ref('likelike/users/'+profile.uid)
-            .set({profile}).then(r=>{
-            this.getMyProfile(profile)
+        let updates={};
+        updates[`likelike/users/${profile.uid}`] = profile;
+        firebase.database().ref().update(updates)
+            .then(r=>{
+            this.getMyProfile(profile);
         })
     };
     handleText=(e)=>{
@@ -71,8 +77,21 @@ class MainPage extends Component {
         console.log(profile)
     };
 
+    like=(user)=>{
+        let updates={};
+        let from = this.state.profile.uid;
+        updates[`likelike/users/${user}/likes/${from}`] = true;
+        firebase.database().ref().update(updates)
+    };
+    dislike=(user)=>{
+        let updates={};
+        let from = this.state.profile.uid;
+        updates[`likelike/users/${user}/dislikes/${from}`] = true;
+        firebase.database().ref().update(updates)
+    };
+
     render() {
-        let {profile, users} = this.state;
+        let {profile, users, editar} = this.state;
 
         return (
             <div className="App">
@@ -81,9 +100,12 @@ class MainPage extends Component {
                         {...profile}
                         logOut={this.logOut}
                         handleText={this.handleText}
-                        saveUser={this.saveUser}/>
+                        saveUser={this.saveUser}
+                        editar={editar}/>
                     <CardsComponent
-                        users={users} />
+                        like={this.like}
+                        dislike={this.dislike}
+                        users={users}/>
                 </div>
             </div>
         );

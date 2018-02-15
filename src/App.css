@@ -98,7 +98,7 @@
   box-shadow: 0 1px 1px 1px rgba(0,0,0,.2);
   padding: 1%;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   max-height: 200px;
   margin-bottom: 2%;
 }
@@ -106,7 +106,9 @@
   width: 180px;
   height: 180px;
   border-radius: 50%;
-
+}
+.main-card div{
+  width: 55%;
 }
 .main-card p{
   margin: 2% 0;
@@ -124,7 +126,7 @@
 }
 .main-card span{
   padding: 2%;
-  min-width: 20%;
+  min-width: 50px;
   border-radius: 10px;
   box-shadow: 0 1px 1px 1px rgba(0,0,0,.5);
   font-size: 1.5em;
